@@ -1009,19 +1009,7 @@ $.setState = function( state ) {
 		$.buttons.push( menuButton );	
 	}
 
-	if( state == 'credits' ) {
-		$.mouse.down = 0;
-
-		var js13kButton = new $.Button( {
-			x: $.cw / 2 + 1,
-			y: 476,
-			lockedWidth: 299,
-			lockedHeight: 49,
-			scale: 3,
-			title: 'JS13KGAMES',
-			action: function() {				
-				location.href = 'http://js13kgames.com';
-				$.mouse.down = 0;
+	
 			}
 		} );
 		$.buttons.push( js13kButton );
@@ -1237,22 +1225,6 @@ $.setupStates = function() {
 			i = $.buttons.length; while( i-- ){ $.buttons[ i ].update( i ) }
 	};
 
-	$.states['credits'] = function() {
-		$.clearScreen();
-
-		$.ctxmg.beginPath();
-		var creditsTitle = $.text( {
-			ctx: $.ctxmg,
-			x: $.cw / 2,
-			y: 100,
-			text: 'CREDITS',
-			hspacing: 3,
-			vspacing: 1,
-			halign: 'center',
-			valign: 'bottom',
-			scale: 10,
-			snap: 1,
-			render: 1
 		} );
 		var gradient = $.ctxmg.createLinearGradient( creditsTitle.sx, creditsTitle.sy, creditsTitle.sx, creditsTitle.ey );
 		gradient.addColorStop( 0, '#fff' );
@@ -1265,7 +1237,7 @@ $.setupStates = function() {
 			ctx: $.ctxmg,
 			x: $.cw / 2 - 10,
 			y: creditsTitle.ey + 49,
-			text: 'CREATED FOR JS13KGAMES BY\nINSPIRATION AND SUPPORT\n\nAUDIO PROCESSING\nGAME INSPIRATION AND IDEAS\n\nHTML5 CANVAS REFERENCE\n\nGAME MATH REFERENCE',
+			text: 'balls',
 			hspacing: 1,
 			vspacing: 17,
 			halign: 'right',
@@ -1282,7 +1254,7 @@ $.setupStates = function() {
 			ctx: $.ctxmg,
 			x: $.cw / 2 + 10,
 			y: creditsTitle.ey + 49,
-			text: '@JACKRUGILE\n@REZONER, @LOKTAR00, @END3R,\n@AUSTINHALLOCK, @CHANDLERPRALL\nJSFXR BY @MARKUSNEUBRAND\nASTEROIDS, CELL WARFARE,\nSPACE PIPS, AND MANY MORE\nNIHILOGIC HTML5\nCANVAS CHEAT SHEET\nBILLY LAMBERTA FOUNDATION\nHTML5 ANIMATION WITH JAVASCRIPT',
+			text: 'balls',
 			hspacing: 1,
 			vspacing: 17,
 			halign: 'left',
