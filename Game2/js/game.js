@@ -973,21 +973,6 @@ $.setState = function( state ) {
 			action: function() {
 				$.setState( 'stats' );
 			}
-		} );
-		$.buttons.push( statsButton );
-
-		var creditsButton = new $.Button( {
-			x: $.cw / 2 + 1,
-			y: statsButton.ey + 26,
-			lockedWidth: 299,
-			lockedHeight: 49,
-			scale: 3,
-			title: 'CREDITS',
-			action: function() {
-				$.setState( 'credits' );
-			}
-		} ) ;
-		$.buttons.push( creditsButton );
 	}
 
 	if( state == 'stats' ) {
