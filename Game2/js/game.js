@@ -1130,6 +1130,8 @@ $.setState = function( state ) {
 		$.storage['powerups'] += $.powerupsCollected;		
 		$.storage['time'] += Math.floor( $.elapsed );
 		$.updateStorage();
+
+		document.getElementById("kills").innerHTML = $.storage['kills'];
 	}
 
 	// set state
