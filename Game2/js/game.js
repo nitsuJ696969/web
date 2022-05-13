@@ -1144,7 +1144,7 @@ $.setupStates = function() {
 			ctx: $.ctxmg,
 			x: $.cw / 2,
 			y: $.ch - 172,
-			text: 'CREATED BY JACK RUGILE FOR JS13KGAMES 2013',
+			text: 'ole is 6ay',
 			hspacing: 1,
 			vspacing: 1,
 			halign: 'center',
