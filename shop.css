@@ -3,7 +3,6 @@
 }
 
 .u-section-1 .u-products-1 {
-  height: auto;
   margin: 40px auto 40px 0;
 }
 
@@ -95,6 +94,7 @@
   }
 
   .u-section-1 .u-products-1 {
+    height: auto;
     margin-right: initial;
     margin-left: initial;
   }
