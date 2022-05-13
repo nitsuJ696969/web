@@ -1092,6 +1092,8 @@ $.setState = function( state ) {
 
 	if( state == 'gameover' ) {
 		$.mouse.down = 0;
+		
+		document.getElementById('killstest').innerHTML = $.kills;
 	
 		$.screenshot = $.ctxmg.getImageData( 0, 0, $.cw, $.ch );
 		var resumeButton = new $.Button( {
