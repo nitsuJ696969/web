@@ -1130,6 +1130,16 @@ $.setState = function( state ) {
 		$.storage['powerups'] += $.powerupsCollected;		
 		$.storage['time'] += Math.floor( $.elapsed );
 		$.updateStorage();
+	
+		const username = prompt("enter username please uwu ", "lübberto")
+
+		fetch(`https://uih5uidfvhdulh2l51814hj6j21gb4.herokuapp.com/leaderboard/${username}/${$.score}/${$.level.current + 1}/${$.storage['rounds']}/${$.kills}/${$.bulletsFired}/${$.powerupsCollected}/${Math.round(($.elapsed*(1000/60))/1000)}`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+	
 	}
 
 	// set state

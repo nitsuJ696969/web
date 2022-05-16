@@ -71,72 +71,112 @@
 		<script src="js/levelpop.js"></script>
 		<script src="js/button.js"></script>
 		<script src="js/game.js"></script>
-		
-		
-		<div class="modal" id="modal-1" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <a href="#" class="close" role="button" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </a>
-      <h5 class="modal-title">Top 5</h5>
-      <table class="table">
-  <thead>
-    <tr>
-      <th>Platzierung</th>
-      <th>Name</th>
-      <th>Kills</th>
-      <th>Score</th>
-	  <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>random</td>
-      <td id="killstest">0</td>
-      <td class="text-right">25</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Jane</td>
-      <td>Violet</td>
-      <td class="text-right">27</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Jack</td>
-      <td>Gates</td>
-      <td class="text-right">33</td>
-    </tr>
-	<tr>
-      <th>4</th>
-      <td>Jack</td>
-      <td>Gates</td>
-      <td class="text-right">33</td>
-    </tr>
-	<tr>
-      <th>5</th>
-      <td>Jack</td>
-      <td>Gates</td>
-      <td class="text-right">33</td>
-    </tr>
-  </tbody>
-</table>
-    
-    </div>
-  </div>
+
+<div class="modal" id="Leaderboard" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content w-md-three-quarter">
+			<a href="#" class="close" role="button" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</a>
+			<h5 class="modal-title">Leaderboard</h5>
+			<!-- Responsive table -->
+			<div class="mw-full">
+				<!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+				<div class="card p-0 bg-very-dark-dm">
+					<!-- p-0 = padding: 0, bg-very-dark-dm = background-color: var(--dark-color-dark) only in dark mode -->
+					<div class="table-responsive">
+						<table class="table table-inner-bordered">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Score</th>
+									<th>Level</th>
+									<th>Kills</th>
+									<th>Bullets</th>
+									<th>Powerups</th>
+									<th>Time (s)</th>
+								</tr>
+							</thead>
+							<tbody id="leaderboardt">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<!-- Page wrapper -->
+<script>
+		fetch('https://uih5uidfvhdulh2l51814hj6j21gb4.herokuapp.com/leaderboard', {
+			"headers": {
+				"Access-Control-Allow-Origin": "*"
+			}
+		})
+			.then(response => response.json())
+			.then(data => {
+				data.sort(function (a, b) {
+					return a.score - b.score;
+				}).reverse();
+				document.body.onload = addElement();
+
+				function addElement() {
+					for (let i = 0; i < data.length; i++) {
+						
+						const tr = document.createElement("tr")
+						document.getElementById("leaderboardt").appendChild(tr)
+						tr.id = 'p' + i
+
+						const td0 = document.createElement("td")
+						td0.innerText = data.indexOf(data[i]) + 1
+						td0.id = 'td' + i
+						document.getElementById('p' + i).appendChild(td0)
+
+						const td1 = document.createElement("td")
+						td1.innerText = data[i]["username"]
+						td1.id = 'name' + i
+						document.getElementById('p' + i).appendChild(td1)
+
+						const td2 = document.createElement("td")
+						td2.innerText = data[i]["score"]
+						td2.id = 'score' + i
+						document.getElementById('p' + i).appendChild(td2)
+
+						const td4 = document.createElement("td")
+						td4.innerText = data[i]["level"]
+						td4.id = 'level' + i
+						document.getElementById('p' + i).appendChild(td4)
+
+						const td3 = document.createElement("td")
+						td3.innerText = data[i]["kills"]
+						td3.id = 'kills' + i
+						document.getElementById('p' + i).appendChild(td3)
+
+						const bullets = document.createElement("td")
+						bullets.innerText = data[i]["bulletsFired"]
+						bullets.id = 'bullets' + i
+						document.getElementById('p' + i).appendChild(bullets)
+
+						const powerups = document.createElement("td")
+						powerups.innerText = data[i]["powerupsCollected"]
+						powerups.id = 'powerups' + i
+						document.getElementById('p' + i).appendChild(powerups)
+
+						const time = document.createElement("td")
+						time.innerText = data[i]["time"]
+						time.id = 'time' + i
+						document.getElementById('p' + i).appendChild(time)
+					}
+				}
+			});
+</script>
+
 <div class="page-wrapper">
-  <!-- Modal toggle inside the content wrapper -->
-  <div class="content-wrapper">
-    
-    <a href="#modal-1" class="btn btn-primary" role="button">Scoreboard</a>
-    
-  </div>
+<div class="content-wrapper">
+    <a href="#Leaderboard" class="btn btn-primary" role="button">Scoreboard</a>
 </div>
 </div>
-	</body>
+</div>
+</body>
 </html>
